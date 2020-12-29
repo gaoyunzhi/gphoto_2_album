@@ -23,7 +23,6 @@ def getImages(content):
 		link = parts.split(end)[0]
 		if '?key=' not in link[:160]:
 			continue
-		print('link', 'https://photos.google.com/share/' + link)
 		yield getImage(cached_url.get('https://photos.google.com/share/' + link, force_cache=True))
 	
 def get(url):
