@@ -7,13 +7,31 @@ import cached_url
 from bs4 import BeautifulSoup
 from telegram_util import AlbumResult as Result
 	
-def getImages(content):
-	
+pivot = 'href="./share/'
+end = '"><img'
 
+img_pivot = 'https://lh3.googleusercontent.com/'
+img_end = '"'
+
+def getImage(content):
+	for parts in content.split(img_pivot)[1:]:
+		link = parts.split(img_end)[0]
+		return img_pivot + link
+
+def getImages(content):
+	for parts in content.split(pivot):
+		link = parts.split(end)[0]
+		if '?key=' not in link[:160]:
+			continue
+		print('link', 'https://photos.google.com/share/' + link)
+		yield getImage(cached_url.get('https://photos.google.com/share/' + link, force_cache=True))
+	
 def get(url):
 	r = Result()
+	r.url = url
 	content = cached_url.get(url, force_cache=True)
 	soup = BeautifulSoup(content, 'html.parser')
-	r.title = soup.get('meta', {'property': 'og:title'})['content']
+	r.title = soup.find('meta', {'property': 'og:title'})['content']
 	r.cap_html = r.title
-	r.imgs = getImages(content)
+	r.imgs = list(getImages(content))
+	return r

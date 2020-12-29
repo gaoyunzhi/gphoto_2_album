@@ -16,7 +16,7 @@ chat = tele.bot.get_chat(-1001198682178)
 def test(url, rotate=False):
 	r = gphoto_2_album.get(url)
 	print(r.imgs)
-	album_sender.send(chat, url, r, rotate = rotate)
+	# album_sender.send(chat, url, r, rotate = rotate)
 	
 if __name__=='__main__':
 	test('https://photos.google.com/share/AF1QipOtOHHWLLtS9RV6yMuIpT9qpUSnoAv2tRg9OpEH27wkf39qU-cRTpn9uJGOd_FTpw?key=a0k1NHNoYmdvY256Y2oyVWd3aXV1TlNJOUk4Wjl3')
