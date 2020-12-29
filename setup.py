@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gphoto_2_album",
-    version="0.0.43",
+    version="0.0.1",
     author="Yunzhi Gao",
     author_email="gaoyunzhi@gmail.com",
     description="Return photo list from google photo link.",
@@ -20,9 +20,7 @@ setuptools.setup(
     ],
     install_requires=[
         'cached_url',
-        'pyyaml',
         'bs4',
-        'lxml',
         'telegram_util',
     ],
     python_requires='>=3.0',
