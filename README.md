@@ -1,6 +1,6 @@
 # gphoto_2_album
 
-Return photo list and caption (markdown format) from weibo.
+Return photo list from google photo link.
 
 ## usage
 
@@ -8,7 +8,8 @@ Return photo list and caption (markdown format) from weibo.
 import gphoto_2_album
 result = gphoto_2_album.get(url)
 result.imgs
-result.cap
+result.cap_html
+result.title
 ```
 
 ## how to install
